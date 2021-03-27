@@ -1,0 +1,1 @@
+News Stand application
