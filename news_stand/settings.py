@@ -21,6 +21,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'zhrdg%3a=&u##q+y-egf$m*zn-(2179#@y4psqq-f11lm_#a@i'
+NEWSAPI_KEY = 'a2c6783b56a345b7acb38f949bbd2be7'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True

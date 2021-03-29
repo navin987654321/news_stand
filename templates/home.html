@@ -1,12 +1,31 @@
 {% extends 'base.html' %}
 
-{% block title %}Home{% endblock %}
-
 {% block content %}
 
 {% if user.is_authenticated %}
-    Hi {{ user.username }}!
-    <p><a href="{% url 'logout' %}">Log Out</a></p>
+    <div class="jumbotron" style="color:black">
+        <h1 style="color: white">Get the latest news updates in your feed</h1>
+    </div>
+    <p>Hi {{ user.username }}. <a href="{% url 'logout' %}">Log Out!</a></p>
+    <div class="container">
+        {% for value in data %}
+        <div class="card mb-3 box" style="max-width: 640px; margin:auto;">
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h5 class="card-title"><a href="{{value.url}}" target="_blanck">{{value.title}}</a></h5>
+                        <p class="card-text">{{value.description}}</p>
+                        <p class="card-text"><small class="text-muted">{{value.publishedat}}</small></p>
+                    </div>
+                </div>
+
+                <div class="col-md-4 img-box">
+                    <img src="{{value.image}}" class="card-img" alt="..." height="100%">
+                </div>
+            </div>
+        </div>    
+        {% endfor %}
+      </div>
 {% else %}
     <p>You are not logged in</p>
     <a href="{% url 'login' %}">Log In</a>
