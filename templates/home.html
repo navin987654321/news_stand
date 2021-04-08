@@ -6,16 +6,22 @@
     <div class="jumbotron" style="color:black">
         <h1 style="color: white">Get the latest news updates in your feed</h1>
     </div>
-    <p>Hi {{ user.username }}. <a href="{% url 'logout' %}">Log Out!</a></p>
+    <div class="card mb-3 box" style="max-width: 320px;">
+        <div class="card-body">
+          <h4 class="card-title">Hi {{user.username}}</h4>
+          <a href="{% url 'logout' %}" class="card-link">Log Out</a>
+        </div>
+    </div>
     <div class="container">
         {% for value in data %}
         <div class="card mb-3 box" style="max-width: 640px; margin:auto;">
             <div class="row">
                 <div class="col-md-8">
                     <div class="card-body">
-                        <h5 class="card-title"><a href="{{value.url}}" target="_blanck">{{value.title}}</a></h5>
-                        <p class="card-text">{{value.description}}</p>
+                        <h5 class="card-title">{{value.username}}</a></h5>
+                        <p class="card-text">{{value.content}}</p>
                         <p class="card-text"><small class="text-muted">{{value.publishedat}}</small></p>
+                        <p class="card-text"><small class="text-muted">Polarity = {{value.polarity.compound}}</small></p>
                     </div>
                 </div>
 
