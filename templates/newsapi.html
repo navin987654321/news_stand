@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{%load static}
+
+{% block content %}
+
+<div class="gap gray-bg">
+    <div class="jumbotron" style="color:black">
+        <h1 style="color: white">Get the latest NewsAPI news updates in your feed</h1>
+    </div>
+    <div class="container-fluid">
+            {% if user.is_authenticated %}
+            <div class="row">
+                <div class="col-lg-3">
+                    {% include 'includes/sidebar.html' %}
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Search your news topic here</h5>
+                            <form action="{% url 'newsapi' %}" method="GET">
+                                <input type="text" id="searchBar" name="search"> <input type="submit" value="Search">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    {% for value in data %}
+                    <div class="card" style="margin:auto;">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="card-body">
+                                    <h5 class="card-title"><a href="{{value.url}}">{{value.title}}</a></h5>
+                                    <p class="card-text">{{value.content}}</p>
+                                    <p class="card-text"><small class="text-muted">{{value.publishedat}}&emsp;Polarity = {{value.polarity.compound}}</small></p>
+                                </div>
+                            </div>
+                            <div class="col-md-4 img-box">
+                                <img src="{{value.image}}" class="card-img" alt="..." height="100%">
+                            </div>
+                        </div>
+                    </div>  
+
+                    {% endfor %}
+                </div>
+            </div>
+            {% else %}
+                <p>You are not logged in</p> <a href="{% url 'login' %}">Log In</a>
+            {% endif %}
+    </div>
+</div>
+{% endblock %}
