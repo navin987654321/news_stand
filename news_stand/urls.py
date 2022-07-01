@@ -1,4 +1,5 @@
-"""news_stand URL Configuration
+""
+"news_stand URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/3.1/topics/http/urls/
@@ -22,4 +23,5 @@ urlpatterns = [
     path('accounts/', include('accounts.urls')),
     path('accounts/', include('django.contrib.auth.urls')),
     path('', include('newsfeed.urls')),
+hey buddy
 ]
